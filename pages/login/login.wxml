@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="login-container">
+  <view class='content'>
+  <!-- head  -->
+    <view class='header'>
+      <view class='header-content'>
+        <image src='/images/header-image.png'></image>
+      </view>
+    </view>
+
+    <!-- form content -->
+    <view class='form-container'>
+      <view class='form-content'>
+        <form>
+          <view class='name-section'>
+            <text class='label-text'>名  称</text>
+            <input name="input" class="name-input" placeholder="please input here" placeholder-style="input-placeholder"/>
+          </view>
+          <view class='split-line'/>
+          <view class='pwd-section'>
+            <text class='label-text'>暗  号</text>
+            <input name="input" password='true' class="pwd-input" placeholder="please input here" />
+          </view>
+          <view class='split-line'/>
+          <view class='submit-section'>
+            <button class='submit-btn' style='background-color: #A96688; color: white;' form-type='submit' plain='true'>提 交</button>
+          </view>
+        </form>       
+      </view>
+    </view>
+
+    <!-- footer -->
+    <view class='split-line'/>
+    <view class='footer-container'>
+      <view class='footer-content'>
+        <text class='text-tip'>这里写提醒的文案!!!</text>
+      </view>
+    </view>
+  </view>
+</view>

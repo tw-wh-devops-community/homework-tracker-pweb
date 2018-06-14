@@ -16,6 +16,16 @@ Page({
     this.setData({
       isBind: app.data.isBind
     })
+    if (this.data.isBind) {
+      wx.redirectTo({
+        url: '../main/main',
+      })
+    } else {
+      wx.redirectTo({
+        url: '../login/login',
+      })
+    }
+    
   },
   getUserInfo: function(e) {
     console.log(e)
