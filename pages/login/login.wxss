@@ -12,6 +12,10 @@
   height: 100%;
 }
 
+.header-image {
+  height: 350rpx;
+}
+
 .form-container {
   margin-top: 40rpx;
 }
@@ -94,4 +98,80 @@
   font-size: 26rpx;
   color: red;
   /* margin-left: 40rpx; */
+}
+
+.image-section {
+  display:inline-block;
+  height:60rpx;
+  width:60rpx;
+}
+
+.image-class {
+  height: 24rpx;
+  width: 44rpx;
+  transition:transform 0.3s;
+}
+
+.image-class_rotate {
+  transform:rotate(180deg); 
+}
+
+.select-view {
+  position: absolute;
+  height: 400rpx;
+  /* top: 70rpx; */
+  /* width: 100%; */
+  border:1px solid #efefef;
+  box-sizing: border-box;
+  /* height: 0; */
+  overflow-y: scroll;
+  /* border-top: 1rpx solid 3; */
+  background: #fff;
+  transition: height 0.3s;
+  z-index: 999;
+  right: 100rpx;
+  width: 550rpx;
+}
+
+.select-text {
+  display: block;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  border-bottom: 1px solid #efefef;
+  padding: 10rpx 10rpx 10rpx 30rpx;
+}
+
+button:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  opacity: .65;    
+}
+
+button:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  opacity: .65;    
+}
+
+button.submit-btn-false {
+  opacity: 0.5;
+  color: white; 
+  background-color: #F3F3F3;
+}
+
+button.submit-btn-true {
+  opacity: 1;
+  color: white; 
+  background-color: #A96688;
+  transition:transform 0.3s;
+}
+
+.btn-hover-class {
+ /* transform:rotate(180deg);   */
 }

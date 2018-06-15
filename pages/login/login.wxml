@@ -4,26 +4,32 @@
   <!-- head  -->
     <view class='header'>
       <view class='header-content'>
-        <image src='/images/header-image.png'></image>
+        <image src='/images/header-image.png' class='header-image'></image>
       </view>
     </view>
 
     <!-- form content -->
     <view class='form-container'>
       <view class='form-content'>
-        <form>
+        <form bindsubmit="bindAndLogin" report-submit="true">
           <view class='name-section'>
             <text class='label-text'>名  称</text>
-            <input name="input" class="name-input" placeholder="please input here" placeholder-style="input-placeholder"/>
+            <input name="input" class="name-input" bindblur="usernameInput" value="{{username}}" placeholder="please input here" placeholder-style="input-placeholder"/>
+            <view class='image-section' catchtap='selectTap'>
+              <image src='/images/more.png' class='image-class {{show && "image-class_rotate"}}' mode="aspectFill"/>
+            </view>
+            <view class='select-view' wx:if="{{datashow}}">
+              <text class='select-text' wx:for="{{selectData}}" wx:key="this" data-name="{{item}}" catchtap='optionTap'>{{item}}</text>
+            </view>
           </view>
           <view class='split-line'/>
           <view class='pwd-section'>
             <text class='label-text'>暗  号</text>
-            <input name="input" password='true' class="pwd-input" placeholder="please input here" />
+            <input name="input" password='true' bindblur="passwordInput" class="pwd-input" placeholder="please input here" maxlength="6" />
           </view>
           <view class='split-line'/>
           <view class='submit-section'>
-            <button class='submit-btn' style='background-color: #A96688; color: white;' form-type='submit' plain='true'>提 交</button>
+            <button class='submit-btn-{{isInputValid}}' form-type='submit' plain='true' disabled="{{!isInputValid}}">确 认</button>
           </view>
         </form>       
       </view>
