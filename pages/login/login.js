@@ -28,6 +28,7 @@ Page({
       datashow: false,
       username: event.target.dataset.name.split(' ')[0]
     });
+    this.checkInputValid();
   },
   usernameInput: function(e) {
     this.setData({
