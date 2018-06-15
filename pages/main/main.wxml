@@ -1,25 +1,6 @@
 <!--index.wxml-->
-<view class="container">
-  <view class='content'>
-    <view class='header'>
-      <view class='header-content'>
-        <image src=''></image>
-      </view>
-      
-    </view>
-
-    <view class='form-container'>
-      <view class='form-content'>
-        <form>
-
-        </form>
-      </view>
-    </view>
-
-    <view class='footer-container'>
-      <view class='footer-content'>
-
-      </view>
-    </view>
-  </view>
+<view class="main-container">
+ <view main-content>
+  <text style='text-align: center; color: red; display: inline-block;'>main page</text>
+ </view>
 </view>

@@ -13,8 +13,8 @@
       <view class='form-content'>
         <form bindsubmit="bindAndLogin" report-submit="true">
           <view class='name-section'>
-            <text class='label-text'>名  称</text>
-            <input name="input" class="name-input" bindblur="usernameInput" value="{{username}}" placeholder="please input here" placeholder-style="input-placeholder"/>
+            <text class='label-text'>姓  名</text>
+            <input name="input" class="name-input" bindblur="usernameInput" value="{{username}}" placeholder="please input here" placeholder-style="input-placeholder" maxlength="16"/>
             <view class='image-section' catchtap='selectTap'>
               <image src='/images/more.png' class='image-class {{show && "image-class_rotate"}}' mode="aspectFill"/>
             </view>
@@ -25,7 +25,7 @@
           <view class='split-line'/>
           <view class='pwd-section'>
             <text class='label-text'>暗  号</text>
-            <input name="input" password='true' bindblur="passwordInput" class="pwd-input" placeholder="please input here" maxlength="6" />
+            <input name="input" password='true' bindblur="passwordInput" class="pwd-input" placeholder="please input here" maxlength="16" />
           </view>
           <view class='split-line'/>
           <view class='submit-section'>
@@ -35,8 +35,8 @@
       </view>
     </view>
 
+    <!-- <view class='split-line' style='margin-top: 100rpx;'/> -->
     <!-- footer -->
-    <view class='split-line'/>
     <view class='footer-container'>
       <view class='footer-content'>
         <text class='text-tip'>这里写提醒的文案!!!</text>

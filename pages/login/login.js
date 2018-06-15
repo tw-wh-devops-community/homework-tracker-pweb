@@ -24,21 +24,18 @@ Page({
     });
   },
   optionTap: function(event) {
-    console.log(event);
     this.setData({
       datashow: false,
-      username: event.target.dataset.name
+      username: event.target.dataset.name.split(' ')[0]
     });
   },
   usernameInput: function(e) {
-    console.log(e.detail.value)
     this.setData({
       username: e.detail.value
     });
     this.checkInputValid();
   },
   passwordInput: function(e) {
-    console.log(e.detail.value)
     this.setData({
       password: e.detail.value
     });
@@ -47,6 +44,9 @@ Page({
   bindAndLogin: function(e) {
     wx.showToast({
       title: 'login in ',
+    })
+    wx.navigateTo({
+      url: '../main/main',
     })
   },
   checkInputValid: function () {
