@@ -25,7 +25,10 @@
           <view class='split-line'/>
           <view class='pwd-section'>
             <text class='label-text'>暗  号</text>
-            <input name="input" password='true' bindblur="passwordInput" class="pwd-input" placeholder="please input here" maxlength="16" />
+            <input name="input" password='true' value="{{password}}" bindblur="passwordInput" class="pwd-input" placeholder="please input here" maxlength="16" />
+            <view class='image-section' catchtap='resetTap'>
+              <image src='/images/close.png' class='image-class' mode="aspectFill"/>
+            </view>
           </view>
           <view class='split-line'/>
           <view class='submit-section'>

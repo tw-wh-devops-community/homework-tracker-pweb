@@ -46,9 +46,15 @@ Page({
     wx.showToast({
       title: 'login in ',
     })
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../main/main',
     })
+  },
+  resetTap: function(event) {
+    this.setData({
+      password: ""
+    });
+    this.checkInputValid();
   },
   checkInputValid: function () {
     if (this.data.username && this.data.password) {
