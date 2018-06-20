@@ -37,6 +37,11 @@ Page({
                   url: '../login/login',
                 })
               }
+            },
+            fail: function(e) {
+              wx.showToast({
+                title: e.errMsg,
+              })
             }
           })
         }
