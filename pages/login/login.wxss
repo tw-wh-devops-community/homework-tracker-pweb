@@ -114,7 +114,7 @@
 }
 
 .image-class {
-  height: 24rpx;
+  height: 44rpx;
   width: 44rpx;
   transition:transform 0.3s;
 }

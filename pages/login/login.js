@@ -1,14 +1,16 @@
 //login.js
 
+const app = getApp()
 Page({
   data: {
     username: '',
     password: '',
     isBind: false,
     show: false,
-    selectData: ['huhx dev', 'linux pm', 'chen ba', 'wangji qa', '胡红翔 dev', '胡红翔 dev', '胡红翔 dev'],
+    selectData: [],
     datashow: false,
-    isInputValid: false
+    isInputValid: false,
+    passReset: false,
   },
   //事件处理函数
   bindViewTap: function() {
@@ -18,16 +20,31 @@ Page({
     
   },
   selectTap: function() {
-    this.setData({
-      show: !this.data.show,
-      datashow: !this.data.datashow
+    // 发送查询interview信息的接口
+    var that = this;
+    wx.request({
+      url: app.globalData.server + 'interviewer/unbind',
+      data: {
+        name: this.data.username
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          selectData: res.data,
+          show: !that.data.show,
+          datashow: !that.data.datashow
+        })
+      }
     });
   },
   optionTap: function(event) {
     this.setData({
       datashow: false,
-      username: event.target.dataset.name.split(' ')[0]
+      username: event.target.dataset.name.name
     });
+    console.log(event.target.dataset.name)
+    wx.setStorageSync("interviewerId", event.target.dataset.name._id)
+    wx.setStorageSync("interviewerName", event.target.dataset.name.name)
     this.checkInputValid();
   },
   usernameInput: function(e) {
@@ -43,16 +60,29 @@ Page({
     this.checkInputValid();
   },
   bindAndLogin: function(e) {
-    wx.showToast({
-      title: 'login in ',
-    })
-    wx.redirectTo({
-      url: '../main/main',
+    wx.request({
+      url: app.globalData.server + 'openId',
+      method: 'POST',
+      data: {
+        openId: wx.getStorageSync("openId"),
+        interviewerId: wx.getStorageSync("interviewerId"),
+      },
+      success: function(res) {
+        wx.redirectTo({
+          url: '../main/main',
+        })
+      },
+      fail: function(err) {
+        wx.showToast({
+          title: err.data,
+        })
+      }
     })
   },
   resetTap: function(event) {
     this.setData({
-      password: ""
+      password: "",
+      passReset: !this.data.passReset
     });
     this.checkInputValid();
   },

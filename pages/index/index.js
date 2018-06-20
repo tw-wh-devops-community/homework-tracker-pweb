@@ -13,26 +13,34 @@ Page({
     })
   },
   onLoad: function () {
-    this.setData({
-      isBind: app.data.isBind
-    })
-    if (this.data.isBind) {
-      wx.redirectTo({
-        url: '../main/main',
-      })
-    } else {
-      wx.redirectTo({
-        url: '../login/login',
-      })
-    }
-    
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+    // 登录得到code并后续得到openId
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        var that = this;
+        if (res.code) {
+          wx.request({
+            url: app.globalData.server + 'openId',
+            data: {
+              jsCode: res.code
+            },
+            success: function (e) {
+              wx.setStorageSync("openId", e.data.openId);
+              if (e.data && e.data.interviewerId) {
+                wx.setStorageSync("interviewerId", e.data.interviewerId)
+                wx.setStorageSync("interviewerName", e.data.interviewerName)
+                wx.redirectTo({
+                  url: '../main/main',
+                })
+              } else {
+                wx.redirectTo({
+                  url: '../login/login',
+                })
+              }
+            }
+          })
+        }
+      }
     })
   }
 })

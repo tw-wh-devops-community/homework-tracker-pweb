@@ -19,7 +19,7 @@
               <image src='/images/more.png' class='image-class {{show && "image-class_rotate"}}' mode="aspectFill"/>
             </view>
             <view class='select-view' wx:if="{{datashow}}">
-              <text class='select-text' wx:for="{{selectData}}" wx:key="this" data-name="{{item}}" catchtap='optionTap'>{{item}}</text>
+              <text class='select-text' wx:for="{{selectData}}" wx:key="this" data-name="{{item}}" catchtap='optionTap'>{{item.name}} {{item.role}}</text>
             </view>
           </view>
           <view class='split-line'/>
@@ -27,7 +27,7 @@
             <text class='label-text'>暗  号</text>
             <input name="input" password='true' value="{{password}}" bindblur="passwordInput" class="pwd-input" placeholder="please input here" maxlength="16" />
             <view class='image-section' catchtap='resetTap'>
-              <image src='/images/close.png' class='image-class' mode="aspectFill"/>
+              <image src='/images/close.png' class='image-class {{passReset && "image-class_rotate"}}' mode="aspectFill"/>
             </view>
           </view>
           <view class='split-line'/>
