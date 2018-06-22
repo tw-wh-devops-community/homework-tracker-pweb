@@ -69,7 +69,7 @@ Page({
         code: this.data.password
       },
       success: function(res) {
-        if (res.statusCode == 200) {
+        if (res.statusCode === 200) {
           wx.redirectTo({
             url: '../main/main',
           })
