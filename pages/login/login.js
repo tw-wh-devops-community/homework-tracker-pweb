@@ -66,15 +66,22 @@ Page({
       data: {
         openId: wx.getStorageSync("openId"),
         interviewerId: wx.getStorageSync("interviewerId"),
+        code: this.data.password
       },
       success: function(res) {
-        wx.redirectTo({
-          url: '../main/main',
-        })
+        if (res.statusCode == 200) {
+          wx.redirectTo({
+            url: '../main/main',
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message,
+          })
+        }
       },
       fail: function(err) {
         wx.showToast({
-          title: err.data,
+          title: err.message,
         })
       }
     })

@@ -31,6 +31,7 @@ Page({
                 wx.setStorageSync("interviewerName", e.data.interviewerName)
                 wx.redirectTo({
                   url: '../main/main',
+                  // url: '../login/login',
                 })
               } else {
                 wx.redirectTo({
