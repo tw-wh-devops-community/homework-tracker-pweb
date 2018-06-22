@@ -1,0 +1,49 @@
+<!--index.wxml-->
+<view class="login-container">
+  <view class='content'>
+  <!-- head  -->
+    <view class='header'>
+      <view class='header-content'>
+        <image src='/images/header-image.png' class='header-image'></image>
+      </view>
+    </view>
+
+    <!-- form content -->
+    <view class='form-container'>
+      <view class='form-content'>
+        <form bindsubmit="bindAndLogin" report-submit="true">
+          <view class='name-section'>
+            <text class='label-text'>姓  名</text>
+            <input name="input" class="name-input" bindblur="usernameInput" value="{{username}}" placeholder="please input here" placeholder-style="input-placeholder" maxlength="16"/>
+            <view class='image-section' catchtap='selectTap'>
+              <image src='/images/more.png' class='image-class {{show && "image-class_rotate"}}' mode="aspectFill"/>
+            </view>
+            <view class='select-view' wx:if="{{datashow}}">
+              <text class='select-text' wx:for="{{selectData}}" wx:key="this" data-name="{{item}}" catchtap='optionTap'>{{item.name}} {{item.role}}</text>
+            </view>
+          </view>
+          <view class='split-line'/>
+          <view class='pwd-section'>
+            <text class='label-text'>暗  号</text>
+            <input name="input" password='true' value="{{password}}" bindblur="passwordInput" class="pwd-input" placeholder="please input here" maxlength="16" />
+            <view class='image-section' catchtap='resetTap'>
+              <image src='/images/close.png' class='image-class {{passReset && "image-class_rotate"}}' mode="aspectFill"/>
+            </view>
+          </view>
+          <view class='split-line'/>
+          <view class='submit-section'>
+            <button class='submit-btn-{{isInputValid}}' form-type='submit' plain='true' disabled="{{!isInputValid}}">确 认</button>
+          </view>
+        </form>       
+      </view>
+    </view>
+
+    <!-- <view class='split-line' style='margin-top: 100rpx;'/> -->
+    <!-- footer -->
+    <view class='footer-container'>
+      <view class='footer-content'>
+        <text class='text-tip'>这里写提醒的文案!!!</text>
+      </view>
+    </view>
+  </view>
+</view>

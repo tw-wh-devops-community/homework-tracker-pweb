@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="main-container">
+ <view main-content>
+  <text style='text-align: center; color: red; display: inline-block;'>main page</text>
+ </view>
+</view>
