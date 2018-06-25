@@ -1,6 +1,63 @@
-<!--index.wxml-->
-<view class="main-container">
- <view main-content>
-  <text style='text-align: center; color: red; display: inline-block;'>main page</text>
- </view>
+<!--main.wxml-->
+<view class="container">
+    <view class='authen'>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+    <view class="welcome-block">
+    <view class="user-info">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view class='userinfo-nickname'>
+      <text>{{"welcome" + interviewerName}}</text>
+      </view>
+      </view>
+      <view class='welcome-message'>
+      <text>感谢参与，继续加油哦～</text>
+      </view>
+      </view>
+      <view class='homework'>
+      <view class='homework-info'>
+      <view class='homework-total-info'>
+        <image class='icon' src="/images/累计收入.png"></image>
+        <view class='info' style='backgroud-color:#F2F2F2'>
+        <text style='font-size:80%'>{{currentYear + "年累计看作业： " + finishNum}}</text>
+        </view>
+      </view>
+      <view class='homework-finished-info'>
+        <image class='icon' src='/images/时间 (1).png'></image>
+        <view class='info'>
+        <text style='font-size:80%'>{{"等待完成作业数量： " + unfinishedHomework.length}}</text>
+        </view>
+      </view>
+      </view>
+      <scroll-view scroll-y='true' class='homework-unfinished'>
+      <view class='homework-detail' wx:for="{{unfinishedHomework}}">
+        <view class='info-row'>
+           <view class='candidate'>
+           <text style='font-size:80%'>{{"候选人：" + item.candidate_name}}</text>
+           </view>
+          <block wx:if="{{item.remain_hours < 0}}">
+            <image class='hour-icon' src='/images/警告.png'></image>
+            <text class='hour-remain-info' style='background-color: #FF000080'>快快快! 超期啦</text>
+          </block>
+          <block wx:elif="{{item.remain_hours < 24}}">
+            <image class='hour-icon' src='/images/提示.png'></image>
+            <text class='hour-remain-info' style='background-color: #F7AD15'>{{"仅剩" +
+            item.remain_time_str}}</text>
+          </block>
+          <block wx:else>
+            <image class='hour-icon' src='/images/植物icon-富贵竹.png'></image>
+            <text class='hour-remain-info' style='background-color: #009966'>{{"剩余: " + item.remain_time_str}}</text>
+          </block>
+        </view>
+        <view class='assign-time-info'>
+        <text style='font-size:80%'>{{"分配时间: " + item.assigned_date}} </text>
+        </view>
+        <view class='finish-time-info'>
+        <text style='font-size:80%'>{{"结束时间: " + item.deadline_date}}</text>
+        </view>
+        </view>
+      </scroll-view>
+      </view>
+      </block>
+      </view>
 </view>
