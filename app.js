@@ -1,11 +1,39 @@
 //app.js
 App({
-  onLaunch: function () {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-    this.getUserInfo();
+  onLaunch: function (options) {
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        var that = this;
+        if (res.code) {
+          wx.request({
+            url: this.globalData.server + 'openId',
+            data: {
+              jsCode: res.code
+            },
+            success: function (e) {
+              wx.setStorageSync("openId", e.data.openId);
+              if (e.data && e.data.interviewerId) {
+                wx.setStorageSync("interviewerId", e.data.interviewerId)
+                wx.setStorageSync("interviewerName", e.data.interviewerName)
+                wx.reLaunch({
+                  url: '/pages/main/main',
+                })
+              } else {
+                wx.reLaunch({
+                  url: '/pages/login/login',
+                })
+              }
+            },
+            fail: function (e) {
+              wx.showToast({
+                title: e.errMsg,
+              })
+            }
+          })
+        }
+      }
+    })
   },
   globalData: {
     userInfo: null,
