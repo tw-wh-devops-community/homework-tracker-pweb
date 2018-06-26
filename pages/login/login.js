@@ -11,6 +11,7 @@ Page({
     datashow: false,
     isInputValid: false,
     passReset: false,
+    hidden: true
   },
   //事件处理函数
   bindViewTap: function() {
@@ -60,6 +61,10 @@ Page({
     this.checkInputValid();
   },
   bindAndLogin: function(e) {
+    var that = this;
+    this.setData({
+      hidden: !this.data.hidden
+    });
     wx.request({
       url: app.globalData.server + 'openId',
       method: 'POST',
@@ -69,6 +74,9 @@ Page({
         code: this.data.password
       },
       success: function(res) {
+        that.setData({
+          hidden: !that.data.hidden
+        });
         if (res.statusCode === 200) {
           app.globalData.isBind = true
           wx.redirectTo({
@@ -76,13 +84,13 @@ Page({
           })
         } else {
           wx.showToast({
-            title: res.data.message,
+            title: res.data.message
           })
         }
       },
       fail: function(err) {
         wx.showToast({
-          title: err.message,
+          title: err.message
         })
       }
     })

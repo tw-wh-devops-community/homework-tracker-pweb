@@ -14,6 +14,7 @@ Page({
     hasHomework: false,
     isLoading: true,
     noAuthor: false,
+    hidden: true
   },
   //事件处理函数
   bindViewTap: function () {
@@ -21,14 +22,13 @@ Page({
   },
 
   getHomeWorks: function (interviewerId, that) {
+    wx.showLoading({
+      title: 'loading....',
+    })
     wx.request({
       url:  app.globalData.server + 'assignment/' + interviewerId,
       success: function (res) {
-        // wx.showToast({
-        //   title: 'lading...',
-        //   icon: 'loading',
-        // })
-        // wx.hideLoading()
+        wx.hideLoading()
         var unfinishedHomeworks = [];
         for (var i = 0; i < res.data.unfinished.length; i++) {
           var item = res.data.unfinished[i]
@@ -69,7 +69,6 @@ Page({
 
   onLoad: function () {
     var that = this
-
     if (app.globalData.userInfo == null) {
       app.userInfoCallback = data => {
         that.setData({
@@ -107,9 +106,13 @@ Page({
  },
 
   onReady: function() {
-    var that = this
+    var that = this 
+  },
 
-    
+  onPullDownRefresh: function() {
+    // wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.loadHomeworkData();
+    wx.stopPullDownRefresh();
   },
  
   loadHomeworkData: function() {
@@ -170,5 +173,20 @@ Page({
         url: '/pages/login/login',
       })
     }
+  },
+  onShow: function() {
+    wx.request({
+      url: app.globalData.server + 'queryOpenIdBind',
+      data: {
+        openId: wx.getStorageSync("openId")
+      },
+      success: function (e) {
+        if (!e.data.bind) {
+          wx.redirectTo({
+            url: '/pages/login/login',
+          })
+        }
+      }
+    })
   }
 })

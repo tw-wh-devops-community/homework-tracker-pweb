@@ -1,37 +1,37 @@
 <!--main.wxml-->
 <view class="container">
     <view class='authen'>
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称        </button>
     <block wx:else>
-    <view wx:if="{{hasHomework}}">
-    <view class="welcome-block">
-    <view class="user-info">
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <view class='userinfo-nickname'>
-      <text>{{"welcome" + interviewerName}}</text>
-      </view>
-      </view>
-      <view class='welcome-message'>
-      <text>感谢参与，继续加油哦～</text>
-      </view>
+      <view wx:if="{{hasHomework}}">
+        <view class="welcome-block">
+          <view class="user-info">
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <view class='userinfo-nickname'>
+            <text>{{"welcome" + interviewerName}}</text>
+          </view>
+        </view>
+        <view class='welcome-message'>
+          <text>感谢参与，继续加油哦～</text>
+        </view>
       </view>
       <view class='homework'>
       <view class='homework-info'>
       <view class='homework-finished-info'>
-        <image class='icon' src="/images/累计收入.png"></image>
+        <image class='icon' src="/images/total.png"></image>
         <view class='info'>
         <text style='font-size:80%'>{{currentYear + "年累计看作业： " + finishNum}}</text>
         </view>
       </view>
       <view class='homework-unFinished-info' wx:if="{{unfinishedHomework.length != 0}}">
-        <image class='icon' src='/images/时间 (1).png'></image>
+        <image class='icon' src='/images/time1.png'></image>
         <view class='info'>
         <text style='font-size:80%'>{{"等待完成作业数量： " + unfinishedHomework.length}}</text>
         </view>
       </view>
       </view>
       <view class='no-unFinished-homework-info' wx:if="{{unfinishedHomework.length == 0}}">
-      <image class='no-unFinished-homework-icon' src='/images/心.png'></image>
+      <image class='no-unFinished-homework-icon' src='/images/heart.png'></image>
       <text class="no-unFinished-homework-text">没有要看的作业哦</text>
       </view>
       <block wx:else>
@@ -42,16 +42,16 @@
            <text style='font-size:80%'>{{"候选人：" + item.candidate_name}}</text>
            </view>
           <block wx:if="{{item.remain_hours < 0}}">
-            <image class='hour-icon' src='/images/警告.png'></image>
-            <text class='hour-remain-info' style='background-color: #FF000080'>快快快! 超期啦</text>
+            <image class='hour-icon' src='/images/warn.png'></image>
+            <text class='hour-remain-info' style='background-color: #FC797A'>快快快! 超期啦</text>
           </block>
           <block wx:elif="{{item.remain_hours < 24}}">
-            <image class='hour-icon' src='/images/提示.png'></image>
+            <image class='hour-icon' src='/images/hint.png'></image>
             <text class='hour-remain-info' style='background-color: #F7AD15'>{{"仅剩" +
             item.remain_time_str}}</text>
           </block>
           <block wx:else>
-            <image class='hour-icon' src='/images/植物icon-富贵竹.png'></image>
+            <image class='hour-icon' src='/images/running.png'></image>
             <text class='hour-remain-info' style='background-color: #009966'>{{"剩余: " + item.remain_time_str}}</text>
           </block>
         </view>

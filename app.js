@@ -30,21 +30,21 @@ App({
               if (that.openIdCallback) {
                 that.openIdCallback(e.data)
               }
-            },
-            fail: function (e) {
-              wx.showToast({
-                title: e.errMsg,
-              })
             }
           })
         }
+      },
+      fail: function(e) {
+        wx.showToast({
+          title: e.errMsg,
+        })
       }
     })
   },
 
   globalData: {
     userInfo: null,
-    server: 'http://localhost:5678/pweb/',
+    server: 'http://192.168.1.106:5678/pweb/',
     interviewerId: '',
     interviewerName: '',
     openId: null,
@@ -77,5 +77,8 @@ App({
           
         }
       })
+  },
+  onShow: function() {
+    // this.onLaunch();
   }
 })

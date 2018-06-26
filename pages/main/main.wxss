@@ -116,7 +116,7 @@
   flex-direction: column;
   position: relative;
   margin: 10rpx 5rpx 10rpx 5rpx;
-  background-color: #AA658816;
+  background-color: #F8F2F5;
   padding: 10rpx;
   height: 28.5%;
 
