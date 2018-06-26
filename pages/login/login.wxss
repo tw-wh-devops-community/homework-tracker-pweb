@@ -182,3 +182,11 @@ button.submit-btn-true {
 .btn-hover-class {
  /* transform:rotate(180deg);   */
 }
+
+.no-homework {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 40%;
+  height: 10%;
+}

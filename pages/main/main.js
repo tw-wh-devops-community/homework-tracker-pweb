@@ -10,6 +10,10 @@ Page({
     interviewerName: null,
     interviewerId: '',
     currentYear: null,
+    hasUserInfo: false,
+    hasHomework: false,
+    isLoading: true,
+    noAuthor: false,
   },
   //事件处理函数
   bindViewTap: function () {
@@ -18,8 +22,13 @@ Page({
 
   getHomeWorks: function (interviewerId, that) {
     wx.request({
-      url: 'http://localhost:5678/pweb/assignment/' + interviewerId,
+      url:  app.globalData.server + 'assignment/' + interviewerId,
       success: function (res) {
+        // wx.showToast({
+        //   title: 'lading...',
+        //   icon: 'loading',
+        // })
+        // wx.hideLoading()
         var unfinishedHomeworks = [];
         for (var i = 0; i < res.data.unfinished.length; i++) {
           var item = res.data.unfinished[i]
@@ -50,7 +59,9 @@ Page({
         that.setData({
           finishNum: res.data.numberOfFinished,
           unfinishedHomework: unfinishedHomeworks,
+          hasHomework: true,
         })
+       
         console.log('interviewer: ' + that.data.finishNum)
       }
     })
@@ -62,15 +73,47 @@ Page({
     if (app.globalData.userInfo == null) {
       app.userInfoCallback = data => {
         that.setData({
-          userInfo: data
+          userInfo: data,
+          hasUserInfo: true,
         })
       };
     } else {
       that.setData({
-        userInfo: app.globalData.userInfo
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true,
       })
     }
 
+    if (app.globalData.openId == null || app.globalData.openId == '') {
+      app.openIdCallback = function (data) {
+        wx.setStorageSync("openId", data.openId);
+        if (data && data.interviewerId) {
+          wx.setStorageSync("interviewerId", data.interviewerId)
+          wx.setStorageSync("interviewerName", data.interviewerName)
+          app.globalData.isBind = true
+          console.log('here is callback!')
+          that.loadHomeworkData()
+        }
+      }
+    } else if (app.globalData.isBind) {
+      that.loadHomeworkData()
+    }
+
+    console.log('here is load!')
+  },
+
+ hideLoading: function() {
+   wx.hideLoading()
+ },
+
+  onReady: function() {
+    var that = this
+
+    
+  },
+ 
+  loadHomeworkData: function() {
+    var that = this
     that.setData({
       currentYear: that.getCurrentYear()
     });
@@ -117,11 +160,15 @@ Page({
   },
 
   getUserInfo: function (e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     });
+    if (!app.globalData.isBind) {
+      wx.redirectTo({
+        url: '/pages/login/login',
+      })
+    }
   }
 })

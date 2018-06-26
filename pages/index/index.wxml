@@ -1,1 +1,15 @@
 <!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse && getUserInfoFail}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:if="{{hasUserInfo && !isBind}}">
+      <navigator url='/pages/login/login' open-type='redirect'>注册</navigator>
+      </block>
+    <block wx:elif="hasUserInfo && isBind">
+    <navigator url='pages/main/main' open-type='redirect'>详情界面</navigator>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> 

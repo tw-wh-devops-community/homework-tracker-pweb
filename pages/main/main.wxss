@@ -69,15 +69,16 @@
   bottom: 80%;
 }
 
-.homework-total-info {
+.homework-finished-info {
   display: flex;
   flex-direction: row;
   position: relative;
   top: 5%;
   height: 30%;
+  background-color: #F2F2F2;
 }
 
-.homework-finished-info {
+.homework-unFinished-info {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -186,6 +187,25 @@
   height:15%;
 }
 
-/* .time-info {
-  font-size: 70%；
-} */
+.no-unFinished-homework-info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 30%;
+  height: 8%;
+}
+
+.no-unFinished-homework-icon {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  height: 100%;
+  width: 8%
+}
+
+.no-unFinished-homework-text {
+  position: relative;
+  top: 40%;
+  left: 40%;
+  font-size: 80%;
+}

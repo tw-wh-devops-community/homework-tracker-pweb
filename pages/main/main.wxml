@@ -3,6 +3,7 @@
     <view class='authen'>
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
+    <view wx:if="{{hasHomework}}">
     <view class="welcome-block">
     <view class="user-info">
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
@@ -16,19 +17,24 @@
       </view>
       <view class='homework'>
       <view class='homework-info'>
-      <view class='homework-total-info'>
+      <view class='homework-finished-info'>
         <image class='icon' src="/images/累计收入.png"></image>
-        <view class='info' style='backgroud-color:#F2F2F2'>
+        <view class='info'>
         <text style='font-size:80%'>{{currentYear + "年累计看作业： " + finishNum}}</text>
         </view>
       </view>
-      <view class='homework-finished-info'>
+      <view class='homework-unFinished-info' wx:if="{{unfinishedHomework.length != 0}}">
         <image class='icon' src='/images/时间 (1).png'></image>
         <view class='info'>
         <text style='font-size:80%'>{{"等待完成作业数量： " + unfinishedHomework.length}}</text>
         </view>
       </view>
       </view>
+      <view class='no-unFinished-homework-info' wx:if="{{unfinishedHomework.length == 0}}">
+      <image class='no-unFinished-homework-icon' src='/images/心.png'></image>
+      <text class="no-unFinished-homework-text">没有要看的作业哦</text>
+      </view>
+      <block wx:else>
       <scroll-view scroll-y='true' class='homework-unfinished'>
       <view class='homework-detail' wx:for="{{unfinishedHomework}}">
         <view class='info-row'>
@@ -57,6 +63,8 @@
         </view>
         </view>
       </scroll-view>
+      </block>
+      </view>
       </view>
       </block>
       </view>
