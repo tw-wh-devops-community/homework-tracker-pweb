@@ -69,7 +69,7 @@ Page({
         code: this.data.password
       },
       success: function(res) {
-        if (res.statusCode === 201) {
+        if (res.statusCode === 200) {
           app.globalData.isBind = true
           wx.redirectTo({
             url: '../main/main',

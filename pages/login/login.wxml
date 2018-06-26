@@ -42,7 +42,7 @@
     <!-- footer -->
     <view class='footer-container'>
       <view class='footer-content'>
-        <text class='text-tip'>这里写提醒的文案!!!</text>
+        <text class='text-tip'>没有我的name请联系recruiter!!!</text>
       </view>
     </view>
   </view>
