@@ -45,7 +45,7 @@ Page({
     });
     wx.setStorageSync("interviewerId", event.target.dataset.name._id)
     wx.setStorageSync("interviewerName", this.data.username)
-    console.log(this.data.username)
+    console.log(event.target.dataset.name)
     this.checkInputValid();
   },
   usernameInput: function(e) {

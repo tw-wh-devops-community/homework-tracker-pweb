@@ -18,8 +18,8 @@
   width: 100%;
 }
 
-.homework-middle-container {
-  margin-top: 45%;
+.button-false {
+  display: none;
 }
 
 .user-info {

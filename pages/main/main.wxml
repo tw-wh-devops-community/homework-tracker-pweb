@@ -1,8 +1,8 @@
 <!--main.wxml-->
 <view class="container">
    <view class='authen'>
-        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称</button>
-        <block wx:else>
+        <button class='button-{{!hasUserInfo && canIUse}}' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称</button>
+        <block wx:if="{{hasUserInfo || !canIUse}}">
             <view wx:if="{{hasHomework}}">
                 <view class="welcome-block">
                     <view class="user-info">

@@ -90,11 +90,11 @@ Page({
           wx.setStorageSync("interviewerName", data.interviewerName)
           app.globalData.isBind = true
           console.log('here is callback!')
-          that.loadHomeworkData()
+          // that.loadHomeworkData()
         }
       }
     } else if (app.globalData.isBind) {
-      that.loadHomeworkData()
+      // that.loadHomeworkData()
     }
     console.log('here is load!')
   },
@@ -180,6 +180,10 @@ Page({
       success: function (e) {
         if (e.data.bind) {
           that.loadHomeworkData();
+        } else {
+          wx.redirectTo({
+            url: '/pages/login/login',
+          })
         }
       }
     })
