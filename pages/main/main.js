@@ -55,7 +55,6 @@ Page({
             return 1;
           }
         })
-
         that.setData({
           finishNum: res.data.numberOfFinished,
           unfinishedHomework: unfinishedHomeworks,
@@ -97,7 +96,6 @@ Page({
     } else if (app.globalData.isBind) {
       that.loadHomeworkData()
     }
-
     console.log('here is load!')
   },
 
@@ -124,8 +122,6 @@ Page({
     that.setData({
       interviewerName: interviewerName
     });
-
-
     var interviewerId = wx.getStorageSync('interviewerId');
     that.getHomeWorks(interviewerId, that)
   },

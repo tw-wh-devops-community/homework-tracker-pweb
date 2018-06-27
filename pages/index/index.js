@@ -56,7 +56,6 @@ Page({
         }
       })
     }
-
     if (app.globalData.openId) {
       if (app.globalData.isBind) {
         that.setData({
