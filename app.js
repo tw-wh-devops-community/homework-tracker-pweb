@@ -1,9 +1,5 @@
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
     var that = this
     this.getUserInfo();
     wx.login({
@@ -34,7 +30,7 @@ App({
           })
         }
       },
-      fail: function(e) {
+      fail: function (e) {
         wx.showToast({
           title: e.errMsg,
         })
@@ -44,7 +40,7 @@ App({
 
   globalData: {
     userInfo: null,
-    server: 'http://192.168.1.106:5678/pweb/',
+    server: 'http://10.209.125.176:5678/pweb/',
     interviewerId: '',
     interviewerName: '',
     openId: null,
@@ -52,10 +48,10 @@ App({
     isAuthor: null,
   },
 
-  getUserInfo: function() {
+  getUserInfo: function () {
     wx.getSetting({
       success: function (res) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+        // 已经授权，可以直接调用 getUserInfo 获取头像昵称
         if (res.authSetting['scope.userInfo']) {
           var that = getApp()
           // that.globalData.isAuthor = true
@@ -63,22 +59,23 @@ App({
             success: function (res) {
               console.log('this is in function')
               console.log(res.userInfo.nickName)
-              
+
               that.globalData.userInfo = res.userInfo;
-              
+
               if (that.userInfoCallback) {
                 that.userInfoCallback(res.userInfo);
               }
             }
-          })}
+          })
+        }
         // } else {
         //   that.globalData.isAuthor = false;
         // };
-          
-        }
-      })
+
+      }
+    })
   },
-  onShow: function() {
+  onShow: function () {
     // this.onLaunch();
   }
 })

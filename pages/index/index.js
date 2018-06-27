@@ -63,19 +63,19 @@ Page({
         })
       }
     } else {
-        app.openIdCallback = function() {
-            that.setData({
-              openId: data.openId
-            })
-            if (app.globalData.isBind) {
-              that.setData({
-                isBind: true
-              })
-            }
+      app.openIdCallback = function () {
+        that.setData({
+          openId: data.openId
+        })
+        if (app.globalData.isBind) {
+          that.setData({
+            isBind: true
+          })
         }
+      }
     }
   },
-  
+
   getUserInfo: function (e) {
     console.log(5);
     console.log(e)

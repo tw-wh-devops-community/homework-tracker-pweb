@@ -22,13 +22,13 @@ Page({
   },
 
   getHomeWorks: function (interviewerId, that) {
-    wx.showLoading({
-      title: 'loading....',
-    })
+    // wx.showLoading({
+    //   title: 'loading....',
+    // })
     wx.request({
-      url:  app.globalData.server + 'assignment/' + interviewerId,
+      url: app.globalData.server + 'assignment/' + interviewerId,
       success: function (res) {
-        wx.hideLoading()
+        // wx.hideLoading()
         var unfinishedHomeworks = [];
         for (var i = 0; i < res.data.unfinished.length; i++) {
           var item = res.data.unfinished[i]
@@ -60,7 +60,7 @@ Page({
           unfinishedHomework: unfinishedHomeworks,
           hasHomework: true,
         })
-       
+
         console.log('interviewer: ' + that.data.finishNum)
       }
     })
@@ -99,21 +99,21 @@ Page({
     console.log('here is load!')
   },
 
- hideLoading: function() {
-   wx.hideLoading()
- },
-
-  onReady: function() {
-    var that = this 
+  hideLoading: function () {
+    wx.hideLoading()
   },
 
-  onPullDownRefresh: function() {
+  onReady: function () {
+    var that = this
+  },
+
+  onPullDownRefresh: function () {
     // wx.showNavigationBarLoading() //在标题栏中显示加载
     this.loadHomeworkData();
     wx.stopPullDownRefresh();
   },
- 
-  loadHomeworkData: function() {
+
+  loadHomeworkData: function () {
     var that = this
     that.setData({
       currentYear: that.getCurrentYear()
@@ -170,7 +170,7 @@ Page({
       })
     }
   },
-  onShow: function() {
+  onShow: function () {
     wx.request({
       url: app.globalData.server + 'queryOpenIdBind',
       data: {
