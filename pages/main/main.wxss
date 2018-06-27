@@ -3,7 +3,7 @@
 .authen {
   display: flex;
   position: fixed;
-  top: 35%;
+  top: 20rpx;
   left: 30%;
   right: 30%;
 }
@@ -16,6 +16,10 @@
   left: 2%;
   height: 20%;
   width: 100%;
+}
+
+.homework-middle-container {
+  margin-top: 45%;
 }
 
 .user-info {

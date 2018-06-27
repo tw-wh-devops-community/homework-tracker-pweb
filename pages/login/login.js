@@ -43,9 +43,9 @@ Page({
       datashow: false,
       username: event.target.dataset.name.name
     });
-    console.log(event.target.dataset.name)
     wx.setStorageSync("interviewerId", event.target.dataset.name._id)
-    wx.setStorageSync("interviewerName", event.target.dataset.name.name)
+    wx.setStorageSync("interviewerName", this.data.username)
+    console.log(this.data.username)
     this.checkInputValid();
   },
   usernameInput: function(e) {

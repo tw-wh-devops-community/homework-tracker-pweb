@@ -17,7 +17,7 @@
         <form bindsubmit="bindAndLogin" report-submit="true">
           <view class='name-section'>
             <text class='label-text'>姓  名</text>
-            <input name="input" class="name-input" bindblur="usernameInput" value="{{username}}" placeholder="please input here" placeholder-style="input-placeholder" maxlength="16"/>
+            <input name="input" class="name-input" bindinput="usernameInput" value="{{username}}" placeholder="please input here" placeholder-style="input-placeholder" maxlength="16"/>
             <view class='image-section' catchtap='selectTap'>
               <image src='/images/more.png' class='image-class {{show && "image-class_rotate"}}' mode="aspectFill"/>
             </view>
@@ -40,9 +40,6 @@
         </form>       
       </view>
     </view>
-
-    <!-- <view class='split-line' style='margin-top: 100rpx;'/> -->
-    <!-- footer -->
     <view class='footer-container'>
       <view class='footer-content'>
         <text class='text-tip'>没有我的name请联系recruiter!!!</text>

@@ -159,28 +159,27 @@ Page({
   },
 
   getUserInfo: function (e) {
+    if (!app.globalData.isBind) {
+      wx.redirectTo({
+        url: '/pages/login/login',
+      })
+    } 
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     });
-    if (!app.globalData.isBind) {
-      wx.redirectTo({
-        url: '/pages/login/login',
-      })
-    }
   },
   onShow: function () {
+    var that = this;
     wx.request({
       url: app.globalData.server + 'queryOpenIdBind',
       data: {
         openId: wx.getStorageSync("openId")
       },
       success: function (e) {
-        if (!e.data.bind) {
-          wx.redirectTo({
-            url: '/pages/login/login',
-          })
+        if (e.data.bind) {
+          that.loadHomeworkData();
         }
       }
     })

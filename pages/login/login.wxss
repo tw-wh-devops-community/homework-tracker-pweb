@@ -137,7 +137,7 @@
   transition: height 0.3s;
   z-index: 999;
   right: 100rpx;
-  width: 550rpx;
+  width: 500rpx;
 }
 
 .select-text {
