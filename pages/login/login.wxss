@@ -103,7 +103,7 @@
 
 .text-tip {
   font-size: 26rpx;
-  color: red;
+  /* color: #F3F3F3; */
   /* margin-left: 40rpx; */
 }
 

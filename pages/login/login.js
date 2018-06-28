@@ -50,7 +50,8 @@ Page({
   },
   usernameInput: function(e) {
     this.setData({
-      username: e.detail.value
+      username: e.detail.value,
+      datashow: false
     });
     this.checkInputValid();
   },

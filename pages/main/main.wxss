@@ -22,6 +22,10 @@
   display: none;
 }
 
+.button-none {
+  display: none;
+}
+
 .user-info {
   display: flex;
   flex-direction: row;

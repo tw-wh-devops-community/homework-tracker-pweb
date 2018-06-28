@@ -171,6 +171,7 @@ Page({
     });
   },
   onShow: function () {
+    console.log("here is main show.");
     var that = this;
     wx.request({
       url: app.globalData.server + 'queryOpenIdBind',
