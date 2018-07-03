@@ -18,7 +18,7 @@ Page({
    
   },
   onLoad: function () {
-    
+
   },
   selectTap: function() {
     // 发送查询interview信息的接口
@@ -72,7 +72,8 @@ Page({
       data: {
         openId: wx.getStorageSync("openId"),
         interviewerId: wx.getStorageSync("interviewerId"),
-        code: this.data.password
+        code: this.data.password,
+        nickName: app.globalData.userInfo.nickName
       },
       success: function(res) {
         that.setData({
@@ -84,6 +85,7 @@ Page({
             url: '../main/main',
           })
         } else {
+          console.log('err', res);
           wx.showToast({
             title: res.data.message
           })

@@ -40,7 +40,7 @@ App({
 
   globalData: {
     userInfo: null,
-    server: 'http://10.209.125.176:5678/pweb/',
+    server: 'http://10.209.124.223:5678/pweb/',
     interviewerId: '',
     interviewerName: '',
     openId: null,
